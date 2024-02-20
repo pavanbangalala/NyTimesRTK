@@ -6,6 +6,7 @@ import TopStories from '../screens/TopStories';
 import Search from '../screens/Search';
 import Colors from '../constants/Colors';
 import IonIcon from 'react-native-vector-icons/Ionicons';
+import TopStoriesScreen from '../screens/TopStories';
 
 const Tabs = createBottomTabNavigator<RootBottomStackParams>();
 
@@ -30,7 +31,7 @@ const Navigator = () => {
         }}>
         <Tabs.Screen
           name="Home"
-          component={TopStories}
+          component={TopStoriesScreen}
           options={() => ({
             title: 'Home',
             tabBarShowLabel: false,

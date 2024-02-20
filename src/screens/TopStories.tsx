@@ -5,8 +5,9 @@ import SafeAreaWrapper from '../components/SafeAreaWrapper';
 import {TopStoriesApi, useGetTopSportStoriesQuery} from '../redux/query/NytApi';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchTopSportsStories} from '../redux/thunk/NytThunkApi';
+import {TopStories} from '../constants/Types';
 
-const TopStories = () => {
+const TopStoriesScreen = () => {
   //   const {data, error, isLoading} =
   //     TopStoriesApi.endpoints.getTopSportStories.useQuery();
 
@@ -15,13 +16,13 @@ const TopStories = () => {
   //   }, [data]);
 
   const dispatch = useDispatch();
-  const topSportsStories = useSelector(state => state.TopSporstStories);
+  const topSportsStories = useSelector<TopStories>(state => state.results);
   useEffect(() => {
     dispatch(fetchTopSportsStories());
   }, []);
 
   useEffect(() => {
-    console.log('top sports stories', topSportsStories.data.results);
+    console.log('top sports stories', topSportsStories);
   }, [topSportsStories]);
   return (
     <SafeAreaWrapper>
@@ -32,7 +33,7 @@ const TopStories = () => {
   );
 };
 
-export default TopStories;
+export default TopStoriesScreen;
 
 const styles = StyleSheet.create({
   container: {
